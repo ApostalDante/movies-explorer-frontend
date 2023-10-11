@@ -95,7 +95,7 @@
   .about-project__title {
     font-size: 18px;
     letter-spacing: -0.72px;
-    padding-bottom: 28px;
+    padding-bottom: 25px;
   }
   .about-project__container:first-of-type {
     flex-direction: column;
@@ -109,6 +109,9 @@
   }
   .about-project__plan:last-of-type {
     margin-top: 56px;
+  }
+  .about-project__plan-title {
+    font-size: 18px;
   }
   .about-project__plan-description {
     font-size: 11px;

@@ -15,13 +15,14 @@ function MoviesCard({ card }) {
     <li className="card">
       <img src={card.image} alt={card.title} className="card__image"></img>
       <div className="card__element">
-        <h3 className="card__title">{card.title}</h3>
+        <h2 className="card__title">{card.title}</h2>
         <div className="card__buttons">
           {pathname === '/saved-movies' ? (
-            <button type="button" className="card__button card__button_delete" />
+            <button type="button" name="delete" className="card__button card__button_delete" />
           ) : (
             <button
               type="button"
+              name="favorites"
               className={`card__button card__button${favorites ? '_active' : '_inactive'}`}
               onClick={handleFavoritesToogle}
             />

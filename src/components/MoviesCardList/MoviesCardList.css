@@ -7,7 +7,7 @@
   justify-content: center;
   justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 32px 20px;
+  gap: 26px 20px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -54,7 +54,7 @@
   }
   .cards__list {
     padding: 40px 0 0;
-    gap: 20px 20px;
+    gap: 14px 20px;
   }
   .cards__button-container {
     max-width: 240px;

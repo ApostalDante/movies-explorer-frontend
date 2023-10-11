@@ -1,8 +1,10 @@
+.search__form {
+  margin: 0 70px;
+}
 .search {
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin: 0 70px;
   padding: 70px 0 48px;
 }
 .search__container {
@@ -96,13 +98,16 @@
 }
 
 @media screen and (max-width: 768px) {
-  .search {
+  .search__form {
     margin: 0 30px;
+  }
+  .search {
     padding: 80px 0 60px;
     align-items: flex-end;
   }
   .search__container {
-    margin-bottom: 29px;
+    margin-bottom: 28px;
+    padding-bottom: 8px;
   }
   .search__toggle {
     flex-direction: row-reverse;
@@ -114,20 +119,18 @@
 }
 
 @media screen and (max-width: 360px) {
+  .search__form {
+    margin: 0 14px;
+  }
   .search {
     align-items: center;
-    margin: 0 14px;
     padding: 84px 0 51px;
   }
   .search__container {
-    padding-bottom: 15px;
     margin-bottom: 40px;
   }
   .search__input {
     font-size: 18px;
-  }
-  .search__toggle {
-    margin: 0 0 26px;
   }
   .search__films {
     font-size: 11px;

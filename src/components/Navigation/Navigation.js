@@ -10,11 +10,11 @@ function Navigation() {
 
   return (
     <nav className="navigation">
-      <button className="navigation__popup-button" type="button" onClick={handleOpenPopup}></button>
+      <button className="navigation__popup-button" type="button" name="popup" onClick={handleOpenPopup}></button>
       <div className={`navigation__popup ${showPopup ? "navigation__popup_type_visible" : ""}`}>
         <div className="navigation__sidebar">
           <div className="navigation__list-container">
-            <button className="navigation__close-button" type="button" onClick={handleClosePopup}></button>
+            <button className="navigation__close-button" type="button" name="close" onClick={handleClosePopup}></button>
             <ul className="navigation__list">
               <li className="navigation__list-item navigation__list-item_type_main">
                 <Link to="/" className="navigation__link" onClick={handleClosePopup}>Главная</Link>
