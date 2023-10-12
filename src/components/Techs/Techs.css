@@ -1,0 +1,127 @@
+.techs {
+  padding: 100px 70px 0;
+  color: #fff;
+  background-color: #272727;
+}
+.techs__header-title {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #dadada;
+}
+.techs__container {
+  margin: 90px 0 0;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.techs__title {
+  margin: 0;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+.techs__description {
+  text-align: center;
+  margin: 26px 0 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+  max-width: 460px;
+}
+.techs__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 90px);
+  gap: 10px 10px;
+  justify-content: center;
+  max-width: 700px;
+  margin: 100px 0;
+  padding: 0;
+  list-style: none;
+}
+.techs__item {
+  width: 90px;
+  height: 60px;
+  margin: 0;
+  border-radius: 10px;
+  background-color: #303030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding: 90px 50px 0;
+  }
+  .techs__container {
+    margin-top: 80px;
+  }
+  .techs__description {
+    margin-top: 22px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+  }
+  .techs__row {
+    grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+    margin: 83px 0 90px;
+  }
+  .techs__item {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .techs {
+    padding: 70px 18px 0;
+    background-color: #202020;
+  }
+  .techs__header-title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #000;
+  }
+  .techs__container {
+    margin-top: 60px;
+  }
+  .techs__title {
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+  .techs__description {
+    margin-top: 24px;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+  .techs__row {
+    grid-template-columns: repeat(2, 84px);
+    margin: 50px 0 70px;
+  }
+  .techs__item {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+}

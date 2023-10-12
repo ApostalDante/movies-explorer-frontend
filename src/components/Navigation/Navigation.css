@@ -1,0 +1,127 @@
+.navigation {
+  padding-top: 14px;
+  width: 59.2%;
+}
+.navigation__popup-button {
+  display: none;
+  margin-left: auto;
+  padding: 0;
+  width: 40px;
+  height: 43px;
+  outline: none;
+  border: none;
+  background: transparent url("../../images/burger-menu.svg") center / cover no-repeat;
+}
+.navigation__sidebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navigation__list-container {
+  display: flex;
+  flex-direction: column;
+}
+.navigation__close-button {
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  outline: none;
+  border: none;
+  background: transparent url("../../images/close.svg") center / 32px no-repeat;
+  align-self: flex-end;
+}
+.navigation__list {
+  display: flex;
+  padding: 0;
+  list-style: none;
+}
+.navigation__list-item {
+  margin: 0 17px 0 0;
+}
+.navigation__list-item_type_main {
+  display: none;
+}
+.navigation__link {
+  color: #fff;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: none;
+  transition: opacity 0.3s linear;
+}
+.navigation__link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.navigation__link_type_profile {
+  background: url("../../images/profile-dark.svg") center / cover no-repeat;
+  border-radius: 40px;
+  width: 111px;
+  height: 32px;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__popup-button {
+    display: flex;
+  }
+  .navigation__popup {
+    display: none;
+  }
+  .navigation__popup_type_visible {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+  }
+  .navigation__sidebar {
+    box-sizing: border-box;
+    width: 520px;
+    min-height: 100vh;
+    margin-left: auto;
+    flex-direction: column;
+    padding: 22px 22px 90px;
+    background-color: #202020;
+  }
+  .navigation__list-container {
+    width: 100%;
+  }
+  .navigation__close-button {
+    display: flex;
+  }
+  .navigation__list {
+    flex-direction: column;
+    margin: 105px auto 0;
+    align-items: center;
+  }
+  .navigation__list-item {
+    margin: 0 0 24px;
+  }
+  .navigation__list-item_type_main {
+    display: flex;
+  }
+  .navigation__link {
+    padding: 0 0 4px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .navigation__list {
+    margin: 105px auto 0;
+  }
+  .navigation__sidebar {
+    padding: 18px 18px 46px;
+  }
+  .navigation__list-item {
+    margin: 0 0 20px;
+  }
+}

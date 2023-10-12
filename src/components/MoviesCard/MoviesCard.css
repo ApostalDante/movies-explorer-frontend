@@ -1,0 +1,70 @@
+.card {
+  background-color: #222;
+  border-radius: 12px;
+}
+.card__image {
+  width: 270px;
+  height: 151px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+.card__element {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 12px 0;
+}
+.card__title {
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.card__buttons {
+  margin: -2px 0 0;
+}
+.card__button {
+  height: 16px;
+  width: 16px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 36px;
+  transition: opacity 0.3s linear;
+}
+.card__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.card__button_inactive {
+  background-color: #313131;
+}
+.card__button_active {
+  background-color: #2be080;
+}
+.card__button_delete {
+  background: url(../../images/d8.svg) center / contain no-repeat;
+  border: none;
+  cursor: pointer;
+}
+.card__duration {
+  padding: 10px 0 14px 12px;
+  margin: 0;
+  color: #8b8b8b;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+@media screen and (max-width: 768px) {
+  .card__image {
+    width: 339px;
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card__image {
+    width: 300px;
+    height: 168px;
+  }
+}

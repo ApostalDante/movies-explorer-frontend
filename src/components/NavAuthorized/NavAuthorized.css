@@ -1,0 +1,38 @@
+.nav-auth {
+  padding-top: 21px;
+}
+.nav-auth__link {
+  display: inline-block;
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  text-decoration: none;
+  transition: opacity 0.3s linear;
+}
+.nav-auth__link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.nav-auth__link_signin {
+  margin-left: 30px;
+  color: #000;
+  background-color: #3ddc84;
+  margin-left: 30px;
+  padding: 8px 20px;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 360px) {
+  .nav-auth {
+    padding-top: 24px;
+  }
+  .nav-auth__link {
+    font-size: 10px;
+  }
+  .nav-auth__link_signin {
+    margin-left: 14px;
+    padding: 5px 12px;
+  }
+}

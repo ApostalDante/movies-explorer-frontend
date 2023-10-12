@@ -1,0 +1,16 @@
+@import url("./vendor/normalize.css");
+@import url("./vendor/fonts/fonts.css");
+
+.page {
+  font-family: "Inter", Arial, sans-serif;
+  max-width: 1280px;
+  min-width: 310px;
+  margin: 0 auto;
+  background-color: #202020;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
