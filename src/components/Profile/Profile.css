@@ -95,6 +95,9 @@
   opacity: 0.6;
   cursor: pointer;
 }
+.profile__button:disabled {
+  opacity: 0.2;
+}
 .profile__link {
   color: #ee3465;
   text-align: center;
@@ -104,6 +107,8 @@
   line-height: normal;
   text-decoration: none;
   transition: opacity 0.3s linear;
+  border: none;
+  background-color: transparent;
 }
 .profile__link:hover {
   opacity: 0.6;

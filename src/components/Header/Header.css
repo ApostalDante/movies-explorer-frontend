@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-between;
   padding: 0 70px;
-  background-color: #073042;
+  background-color: transparent;
 }
 .header_type_authorized {
-  background-color: transparent;
+  background-color: #073042;
 }
 .header__link {
   margin: 18px 0;

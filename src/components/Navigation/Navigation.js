@@ -1,12 +1,14 @@
 import "./Navigation.css";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 function Navigation() {
   const [showPopup, setShowPopup] = React.useState(false);
   const handleOpenPopup = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
+  const { pathname } = useLocation();
+
 
   return (
     <nav className="navigation">
@@ -27,7 +29,7 @@ function Navigation() {
               </li>
             </ul>
           </div>
-          <Link to="/profile" className="navigation__link navigation__link_type_profile" onClick={handleClosePopup}></Link>
+          <Link to="/profile" className={`navigation__link ${pathname === '/' ? 'navigation__link_type_profile-blue' : 'navigation__link_type_profile-dark'}`} onClick={handleClosePopup}></Link>
         </div>
       </div>
     </nav>
