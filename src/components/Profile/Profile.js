@@ -11,10 +11,12 @@ function Profile({ handleUpdateUser, signOut, getUser }) {
   const [email, setEmail] = React.useState(currentUser.email);
   const [lastEmail, setLastEmail] = React.useState(currentUser.email);
   const [isButtonDisabled, setButtonDisabled] = React.useState(false);
+  const [errorName, setErrorName] = React.useState('');
+  const [errorEmail, setErrorEmail] = React.useState('');
 
   React.useEffect(() => {
     getUser();
-  }, [currentUser]);
+  }, [isButtonDisabled]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -29,11 +31,14 @@ function Profile({ handleUpdateUser, signOut, getUser }) {
     setName(value);
     if (!evt.target.checkValidity()) {
       setButtonDisabled(false);
+      setErrorName('Что-то пошло не так...');
     } else {
       if (value !== lastName && value !== '' && email !== "" && isEmail(email)) {
         setButtonDisabled(true);
+        setErrorName('');
       } else {
         setButtonDisabled(false);
+        setErrorName('');
       }
     }
   };
@@ -43,14 +48,18 @@ function Profile({ handleUpdateUser, signOut, getUser }) {
     setEmail(value);
     if (!isEmail(value)) {
       setButtonDisabled(false);
+      setErrorEmail('Некорректый адрес почты');
     } else {
       if (value !== lastEmail && value !== "" && name !== "" && name.length >= 2) {
         setButtonDisabled(true);
+        setErrorEmail('');
       } else {
         setButtonDisabled(false);
+        setErrorEmail('');
       }
     }
   };
+
 
   return (
     <main className="main-profile">
@@ -61,22 +70,25 @@ function Profile({ handleUpdateUser, signOut, getUser }) {
             <h3 className="profile__title">Имя</h3>
             <div className="profile__items profile__items_type_name">
               <input
-                className="profile__input"
+                className={`profile__input ${errorName ? 'profile__input_type_color-error' : ''}`}
                 value={name}
                 minLength={2}
                 maxLength={30}
+                type="text"
                 onChange={handleNameChange}
                 required
               />
+              <span className={`profile__error ${errorName ? 'profile__error_type_active' : ''}`}>{errorName}</span>
             </div>
             <div className="profile__items profile__items_type_email">
               <input
-                className="profile__input"
+                className={`profile__input ${errorEmail ? 'form__input_type_color-error' : ''}`}
                 value={email}
                 type="email"
                 onChange={handleEmailChange}
                 required
               />
+              <span className={`profile__error ${errorEmail ? 'profile__error_type_active' : ''}`}>{errorEmail}</span>
             </div>
             <h3 className="profile__title">E-mail</h3>
           </div>

@@ -20,7 +20,7 @@ import "./App.css";
 function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  //const [isLoading, setIsLoading] = useState(false);
   const [isOpenPopup, setIsOpenPopup] = useState(false);
   const [popupTitle, setPopupTitle] = useState('');
   const [isLogginIn, setIsLogginIn] = useState(false);
@@ -49,7 +49,7 @@ function App() {
         if (token) {
           setIsLogginIn(true);
           getUser();
-          navigate("/");
+          navigate("/movies");
         }
       })
       .catch((err) => {
@@ -65,9 +65,9 @@ function App() {
         setIsLogginIn(true);
       })
       .catch((err) => console.log(`Что-то пошло не так! Ошибка сервера ${err}`))
-      .finally(() => {
-        setIsLoading(false);
-      });
+    /* .finally(() => {
+       setIsLoading(false);
+     });*/
   };
 
   function checkToken() {
@@ -110,7 +110,7 @@ function App() {
     localStorage.removeItem('savedFilmsTumbler');
     localStorage.removeItem('savedFilmsInputSearch');
     setIsLogginIn(false);
-    navigate("/signin");
+    navigate("/");
   };
 
   function openPopup(textError) {
@@ -122,6 +122,7 @@ function App() {
     setIsOpenPopup(false);
     setPopupTitle('');
   };
+
 
 
   return (
@@ -141,7 +142,7 @@ function App() {
               <ProtectedRoute
                 element={Movies}
                 isLogginIn={isLogginIn}
-                isLoading={isLoading}
+                //isLoading={isLoading}
                 openPopup={openPopup}
               />
             }
@@ -153,7 +154,7 @@ function App() {
                 element={SavedMovies}
                 isLogginIn={isLogginIn}
                 openPopup={openPopup}
-                isLoading={isLoading}
+              //isLoading={isLoading}
               />
             }
           />
@@ -162,7 +163,7 @@ function App() {
             element={
               <Register
                 handleRegister={handleRegister}
-                isLoading={isLoading}
+              // isLoading={isLoading}
               />
             }
           />
@@ -172,7 +173,7 @@ function App() {
               <Login
                 handleLogin={handleLogin}
                 currentUser={currentUser}
-                isLoading={isLoading}
+              //isLoading={isLoading}
               />
             }
           />

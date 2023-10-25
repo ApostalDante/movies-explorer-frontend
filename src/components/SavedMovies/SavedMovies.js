@@ -47,12 +47,12 @@ const SavedMovies = ({ openPopup }) => {
       setCardsShowed(filterData);
       if (inputSearch) {
         localStorage.setItem('savedFilms', JSON.stringify(filterData));
-        localStorage.setItem('savedFilmsTumbler', tumbler);
-        localStorage.setItem('savedFilmsInputSearch', inputSearch);
+        //  localStorage.setItem('savedFilmsTumbler', tumbler);
+        // localStorage.setItem('savedFilmsInputSearch', inputSearch); 
       } else {
         localStorage.removeItem('savedFilms');
-        localStorage.removeItem('savedFilmsTumbler');
-        localStorage.removeItem('savedFilmsInputSearch');
+        //  localStorage.removeItem('savedFilmsTumbler');
+        //  localStorage.removeItem('savedFilmsInputSearch'); 
       }
     } catch (err) {
       setErrorsInfo(
@@ -60,12 +60,16 @@ const SavedMovies = ({ openPopup }) => {
       );
       setCards([]);
       localStorage.removeItem('savedFilms');
-      localStorage.removeItem('savedFilmsTumbler');
-      localStorage.removeItem('savedFilmsInputSearch');
+      // localStorage.removeItem('savedFilmsTumbler');
+      // localStorage.removeItem('savedFilmsInputSearch');
     } finally {
       setErrorsInfo('');
     }
   };
+
+  React.useEffect(() => {
+    getCardMovies();
+  }, []);
 
   React.useEffect(() => {
     const fetchData = async () => {

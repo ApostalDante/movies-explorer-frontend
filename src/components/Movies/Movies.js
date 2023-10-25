@@ -121,9 +121,10 @@ function Movies({ openPopup }) {
     let countCards;
     const clientWidth = document.documentElement.clientWidth;
     const cardsCountConfig = {
-      '1200': [12, 4],
-      '768': [8, 2],
-      '320': [5, 2],
+      '1279': [16, 4],
+      '989': [12, 3],
+      '758': [8, 2],
+      '320': [5, 1],
     };
 
     Object.keys(cardsCountConfig)
@@ -144,8 +145,6 @@ function Movies({ openPopup }) {
       window.removeEventListener('resize', handlerResize);
     };
   }, []);
-
-
 
   useEffect(() => {
     mainApi
