@@ -20,7 +20,6 @@ import "./App.css";
 function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
-  //const [isLoading, setIsLoading] = useState(false);
   const [isOpenPopup, setIsOpenPopup] = useState(false);
   const [popupTitle, setPopupTitle] = useState('');
   const [isLogginIn, setIsLogginIn] = useState(false);
@@ -65,9 +64,6 @@ function App() {
         setIsLogginIn(true);
       })
       .catch((err) => console.log(`Что-то пошло не так! Ошибка сервера ${err}`))
-    /* .finally(() => {
-       setIsLoading(false);
-     });*/
   };
 
   function checkToken() {
@@ -103,7 +99,6 @@ function App() {
 
   function handleSignOut() {
     localStorage.removeItem('jwt');
-    // localStorage.removeItem('films');
     localStorage.removeItem('cards');
     localStorage.removeItem('cardTumbler');
     localStorage.removeItem('inputSearchCard');
@@ -143,7 +138,6 @@ function App() {
               <ProtectedRoute
                 element={Movies}
                 isLogginIn={isLogginIn}
-                //isLoading={isLoading}
                 openPopup={openPopup}
               />
             }
@@ -155,7 +149,6 @@ function App() {
                 element={SavedMovies}
                 isLogginIn={isLogginIn}
                 openPopup={openPopup}
-              //isLoading={isLoading}
               />
             }
           />
@@ -164,7 +157,6 @@ function App() {
             element={
               <Register
                 handleRegister={handleRegister}
-              // isLoading={isLoading}
               />
             }
           />
@@ -174,7 +166,6 @@ function App() {
               <Login
                 handleLogin={handleLogin}
                 currentUser={currentUser}
-              //isLoading={isLoading}
               />
             }
           />

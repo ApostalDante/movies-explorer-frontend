@@ -13,7 +13,7 @@ function Movies({ openPopup }) {
   const [cardTumbler, setCardTumbler] = React.useState(false);
   const [preloader, setPreloader] = useState(false);
   const [inputSearchCard, setInputSearchCard] = useState('');
-  const [MoviesCount, setMoviesCount] = useState([]);;
+  const [MoviesCount, setMoviesCount] = useState([]);
   const [cardsShowed, setCardsShowed] = React.useState([]);
   const [filmsWithTumbler, setFilmsWithTumbler] = useState([]);
   const [cardShowedWithTumbler, setCardShowedWithTumbler] = useState([]);
@@ -35,7 +35,7 @@ function Movies({ openPopup }) {
       let filterData = data.filter(({ nameRU }) => nameRU.toLowerCase().includes(inputSearch.toLowerCase()));
 
       localStorage.setItem('cards', JSON.stringify(filterData));
-      localStorage.setItem('filmsInputSearch', inputSearch);
+      localStorage.setItem('inputSearchCard', inputSearch);
 
       const spliceData = filterData.splice(0, MoviesCount[0]);
       setCardsShowed(spliceData);
@@ -49,9 +49,8 @@ function Movies({ openPopup }) {
 
       setCards([]);
       localStorage.removeItem('cards');
-      localStorage.removeItem('filmsTumbler');
       localStorage.removeItem('cardTumbler');
-      localStorage.removeItem('filmsInputSearch');;
+      localStorage.removeItem('inputSearchCard');
     } finally {
       setPreloader(false);
     }
@@ -104,7 +103,7 @@ function Movies({ openPopup }) {
     }
 
     localStorage.setItem('cards', JSON.stringify(filterShowed.concat(filter)));
-    localStorage.setItem('filmsTumbler', tumbler);
+    localStorage.setItem('cardTumbler', tumbler);
     setCardsShowed(filterShowed);
     setCards(filter);
   };

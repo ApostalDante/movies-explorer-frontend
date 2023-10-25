@@ -48,11 +48,9 @@ const SavedMovies = ({ openPopup }) => {
       if (inputSearch) {
         localStorage.setItem('savedFilms', JSON.stringify(filterData));
         localStorage.setItem('savedFilmsTumbler', tumbler);
-        // localStorage.setItem('savedFilmsInputSearch', inputSearch); 
       } else {
         localStorage.removeItem('savedFilms');
         localStorage.removeItem('savedFilmsTumbler');
-        //  localStorage.removeItem('savedFilmsInputSearch'); 
       }
     } catch (err) {
       setErrorsInfo(
@@ -61,7 +59,7 @@ const SavedMovies = ({ openPopup }) => {
       setCards([]);
       localStorage.removeItem('savedFilms');
       localStorage.removeItem('savedFilmsTumbler');
-      // localStorage.removeItem('savedFilmsInputSearch');
+      localStorage.removeItem('savedFilmsInputSearch');
     } finally {
       setErrorsInfo('');
     }
