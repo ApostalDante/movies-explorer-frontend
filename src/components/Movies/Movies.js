@@ -20,7 +20,6 @@ function Movies({ openPopup }) {
 
   async function getCardMovies(inputSearch) {
     setCardTumbler(false);
-    localStorage.setItem('filmsTumbler', false);
     localStorage.setItem('cardTumbler', false);
 
     if (!inputSearch) {
@@ -35,7 +34,7 @@ function Movies({ openPopup }) {
       const data = await moviesApi.getMovies();
       let filterData = data.filter(({ nameRU }) => nameRU.toLowerCase().includes(inputSearch.toLowerCase()));
 
-      localStorage.setItem('films', JSON.stringify(filterData));
+      localStorage.setItem('cards', JSON.stringify(filterData));
       localStorage.setItem('filmsInputSearch', inputSearch);
 
       const spliceData = filterData.splice(0, MoviesCount[0]);
@@ -49,7 +48,7 @@ function Movies({ openPopup }) {
       );
 
       setCards([]);
-      localStorage.removeItem('films');
+      localStorage.removeItem('cards');
       localStorage.removeItem('filmsTumbler');
       localStorage.removeItem('cardTumbler');
       localStorage.removeItem('filmsInputSearch');;
@@ -94,7 +93,7 @@ function Movies({ openPopup }) {
   async function getSwitchCard(tumbler) {
     let filterShowed = [];
     let filter = [];
-    if (tumbler) {
+    if (tumbler && cards) {
       setCardShowedWithTumbler(cardsShowed);
       setFilmsWithTumbler(cards);
       filterShowed = cardsShowed.filter(({ duration }) => duration <= 40);
@@ -104,7 +103,7 @@ function Movies({ openPopup }) {
       filter = filmsWithTumbler;
     }
 
-    localStorage.setItem('films', JSON.stringify(filterShowed.concat(filter)));
+    localStorage.setItem('cards', JSON.stringify(filterShowed.concat(filter)));
     localStorage.setItem('filmsTumbler', tumbler);
     setCardsShowed(filterShowed);
     setCards(filter);
@@ -156,7 +155,7 @@ function Movies({ openPopup }) {
         openPopup(`Ошибка сервера ${err}`);
       });
 
-    const localStorageFilms = localStorage.getItem('films');
+    const localStorageFilms = localStorage.getItem('cards');
     const localStorageTumbler = localStorage.getItem('cardTumbler');
     const localStorageInputSearch = localStorage.getItem('inputSearchCard');
 
