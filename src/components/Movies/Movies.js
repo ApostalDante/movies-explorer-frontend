@@ -166,7 +166,7 @@ function Movies({ openPopup }) {
     if (localStorageFilms) {
       const filterData = JSON.parse(localStorageFilms);
       setCardsShowed(filterData.splice(0, getCardsCount()[0]));
-      //     setCardsShowedMin(filterData.splice(0, getCardsCount()[0]));
+      setCardsShowedMin(filterData.splice(0, getCardsCount()[0]));
       setCards(filterData);
       setPreloader(false);
     }
