@@ -84,6 +84,7 @@ function App() {
     setIsLogginIn(false)
   };
   useEffect(() => {
+    getUser();
     checkToken();
   }, [isLogginIn]);
 
