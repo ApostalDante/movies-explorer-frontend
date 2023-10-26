@@ -18,6 +18,8 @@ function Movies({ openPopup }) {
   const [filmsWithTumbler, setFilmsWithTumbler] = useState([]);
   const [cardShowedWithTumbler, setCardShowedWithTumbler] = useState([]);
 
+  const [cardsShowedMin, setCardsShowedMin] = React.useState([]);
+
   async function getCardMovies(inputSearch) {
     setCardTumbler(false);
     localStorage.setItem('cardTumbler', false);
@@ -39,6 +41,7 @@ function Movies({ openPopup }) {
 
       const spliceData = filterData.splice(0, MoviesCount[0]);
       setCardsShowed(spliceData);
+      //  setCardsShowedMin(spliceData)
       setCards(filterData);
       setCardShowedWithTumbler(spliceData);
       setFilmsWithTumbler(filterData);
@@ -105,6 +108,7 @@ function Movies({ openPopup }) {
     localStorage.setItem('cards', JSON.stringify(filterShowed.concat(filter)));
     localStorage.setItem('cardTumbler', tumbler);
     setCardsShowed(filterShowed);
+    setCardsShowedMin(filterShowed)
     setCards(filter);
   };
 
@@ -112,6 +116,7 @@ function Movies({ openPopup }) {
     const splic = cards;
     const newShowed = cardsShowed.concat(splic.splice(0, MoviesCount[1]));
     setCardsShowed(newShowed);
+    //   setCardsShowedMin(newShowed)
     setCards(splic);
   };
 
@@ -161,6 +166,7 @@ function Movies({ openPopup }) {
     if (localStorageFilms) {
       const filterData = JSON.parse(localStorageFilms);
       setCardsShowed(filterData.splice(0, getCardsCount()[0]));
+      //     setCardsShowedMin(filterData.splice(0, getCardsCount()[0]));
       setCards(filterData);
       setPreloader(false);
     }
@@ -171,6 +177,24 @@ function Movies({ openPopup }) {
       setInputSearchCard(localStorageInputSearch);
     }
   }, [openPopup]);
+
+
+  useEffect(() => {
+    const cardTumbler = localStorage.getItem('cardTumbler')
+    let filterShowed = [];
+    // setCardsShowed([])
+    if (cardTumbler === 'true') {
+      filterShowed = filmsWithTumbler.filter(({ duration }) => duration <= 40);
+      setCardsShowed([])
+      setCardsShowed(filterShowed)
+    } else {
+      console.log(cardsShowedMin)
+      setCardsShowed(cardsShowedMin)
+    }
+  }, [cardsShowedMin]);
+  console.log(cardsShowed)
+
+
 
   return (
     <div className="movies">
