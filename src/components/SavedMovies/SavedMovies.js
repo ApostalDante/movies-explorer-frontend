@@ -75,6 +75,7 @@ const SavedMovies = ({ openPopup }) => {
   };
 
   React.useEffect(() => {
+    localStorage.setItem('filmsInputSearch', ' ');
     getCardMovies();
   }, []);
 
