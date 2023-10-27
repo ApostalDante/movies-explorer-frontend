@@ -21,7 +21,7 @@ function Movies({ openPopup }) {
   const [cardsShowedMin, setCardsShowedMin] = React.useState([]);
 
   async function getCardMovies(inputSearch, isShort) {
-    localStorage.setItem('cardTumbler', false);
+    //localStorage.setItem('cardTumbler', false);
 
     if (!inputSearch) {
       setErrorsInfo('Нужно ввести ключевое слово');
@@ -42,11 +42,11 @@ function Movies({ openPopup }) {
       const spliceData = filterData.splice(0, MoviesCount[0]);
 
       const result = isShort ? filterData.filter(({ duration }) => duration <= 40) : spliceData;
-      localStorage.removeItem('isShort');
+      //      localStorage.removeItem('isShort');
       localStorage.setItem('isShort', isShort);
 
       setCardsShowed(result);
-      setCardsShowedMin(spliceData)
+      //  setCardsShowedMin(spliceData)
       setCards(filterData);
       setCardShowedWithTumbler(result);
       setFilmsWithTumbler(filterData);
@@ -112,8 +112,8 @@ function Movies({ openPopup }) {
 
     localStorage.setItem('cards', JSON.stringify(filterShowed.concat(filter)));
     localStorage.setItem('cardTumbler', tumbler);
-    setCardsShowed(filterShowed);
-    setCardsShowedMin(filterShowed)
+    setCardsShowed(filter);
+    //   setCardsShowedMin(filterShowed)
     setCards(filter);
   };
 
@@ -121,7 +121,7 @@ function Movies({ openPopup }) {
     const splic = cards;
     const newShowed = cardsShowed.concat(splic.splice(0, MoviesCount[1]));
     setCardsShowed(newShowed);
-    //   setCardsShowedMin(newShowed)
+    // setCardsShowedMin(newShowed)
     setCards(splic);
   };
 
@@ -183,24 +183,18 @@ function Movies({ openPopup }) {
     }
   }, [openPopup]);
 
-
-  useEffect(() => {
-    const cardTumbler = localStorage.getItem('cardTumbler')
-    let filterShowed = [];
-    // setCardsShowed([])
-    if (cardTumbler === 'true') {
-      filterShowed = filmsWithTumbler.filter(({ duration }) => duration <= 40);
-      setCardsShowed([])
-      setCardsShowed(filterShowed)
-    } else {
-      // console.log(cardsShowedMin)
-      setCardsShowed(cardsShowedMin)
-    }
-  }, [cardsShowedMin]);
-
-
-  //console.log(cardsShowed)
-
+  /*
+    useEffect(() => {
+      const cardTumbler = localStorage.getItem('cardTumbler')
+      let filterShowed = [];
+      if (cardTumbler === 'true') {
+        filterShowed = filmsWithTumbler.filter(({ duration }) => duration <= 40);
+        setCardsShowed(filterShowed)
+      } else {
+        setCardsShowed(filterShowed)
+      }
+    }, [cardsShowedMin]);
+  */
 
 
   return (
