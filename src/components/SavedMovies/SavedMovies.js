@@ -44,6 +44,7 @@ const SavedMovies = ({ openPopup }) => {
 
   async function getCardMovies(inputSearch, tumbler) {
     localStorage.setItem('savedCardTumbler', false);
+    if (inputSearch === '') inputSearch = ' ';
     setErrorsInfo('');
     try {
       const data = cards;

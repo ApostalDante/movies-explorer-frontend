@@ -37,9 +37,7 @@ function Movies({ openPopup }) {
 
       localStorage.setItem('cards', JSON.stringify(filterData));
       localStorage.setItem('inputSearchCard', inputSearch);
-      //    localStorage.removeItem('filteredData');
       localStorage.setItem('filteredData', JSON.stringify(filterData));
-      //  console.log({ filterData })
 
       const spliceData = filterData.splice(0, MoviesCount[0]);
 
@@ -48,7 +46,7 @@ function Movies({ openPopup }) {
       localStorage.setItem('isShort', isShort);
 
       setCardsShowed(result);
-      //  setCardsShowedMin(spliceData)
+      setCardsShowedMin(spliceData)
       setCards(filterData);
       setCardShowedWithTumbler(result);
       setFilmsWithTumbler(filterData);
