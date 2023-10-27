@@ -23,7 +23,7 @@ function SearchForm({ getCardMovies, cardTumbler, inputSearchCard, getSwitchCard
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    getCardMovies(inputSearch)
+    getCardMovies(inputSearch, switchMovie);
   };
 
   return (

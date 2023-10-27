@@ -22,7 +22,8 @@ function MoviesCard({ card, toggleCardFavorites, favoritCard }) {
     toggleCardFavorites({ ...card, _id: favoritesCard.length > 0 ? favoritesCard[0]._id : null }, !favorites);
   };
 
-  function deleteFavoritesCard() {
+  function deleteFavoritesCard(evt) {
+    evt.preventDefault();
     toggleCardFavorites(card, false);
   };
 

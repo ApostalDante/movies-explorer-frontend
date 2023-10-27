@@ -20,8 +20,7 @@ function Movies({ openPopup }) {
 
   const [cardsShowedMin, setCardsShowedMin] = React.useState([]);
 
-  async function getCardMovies(inputSearch) {
-    setCardTumbler(false);
+  async function getCardMovies(inputSearch, isShort) {
     localStorage.setItem('cardTumbler', false);
 
     if (!inputSearch) {
@@ -38,12 +37,20 @@ function Movies({ openPopup }) {
 
       localStorage.setItem('cards', JSON.stringify(filterData));
       localStorage.setItem('inputSearchCard', inputSearch);
+      //    localStorage.removeItem('filteredData');
+      localStorage.setItem('filteredData', JSON.stringify(filterData));
+      //  console.log({ filterData })
 
       const spliceData = filterData.splice(0, MoviesCount[0]);
-      setCardsShowed(spliceData);
+
+      const result = isShort ? filterData.filter(({ duration }) => duration <= 40) : spliceData;
+      localStorage.removeItem('isShort');
+      localStorage.setItem('isShort', isShort);
+
+      setCardsShowed(result);
       //  setCardsShowedMin(spliceData)
       setCards(filterData);
-      setCardShowedWithTumbler(spliceData);
+      setCardShowedWithTumbler(result);
       setFilmsWithTumbler(filterData);
     } catch (err) {
       setErrorsInfo(
@@ -127,7 +134,7 @@ function Movies({ openPopup }) {
       '1279': [16, 4],
       '989': [12, 3],
       '758': [8, 2],
-      '320': [5, 1],
+      '320': [5, 2],
     };
 
     Object.keys(cardsCountConfig)
@@ -188,11 +195,13 @@ function Movies({ openPopup }) {
       setCardsShowed([])
       setCardsShowed(filterShowed)
     } else {
-      console.log(cardsShowedMin)
+      // console.log(cardsShowedMin)
       setCardsShowed(cardsShowedMin)
     }
   }, [cardsShowedMin]);
-  console.log(cardsShowed)
+
+
+  //console.log(cardsShowed)
 
 
 

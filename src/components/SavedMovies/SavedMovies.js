@@ -14,6 +14,8 @@ const SavedMovies = ({ openPopup }) => {
   const [cardWithSwitcher, setCardWithSwitcher] = React.useState([]);
   const [filmsShowedWithTumbler, setFilmsShowedWithTumbler] = React.useState([]);
 
+  const [delSearch, setDelSearch] = React.useState(false);
+
   async function toggleCardsFavorite(card, favorite) {
     if (!favorite) {
       try {
@@ -21,6 +23,7 @@ const SavedMovies = ({ openPopup }) => {
         const newCard = await mainApi.getSavedMovies();
         setCards(newCard);
         setCardsShowed(newCard);
+        setDelSearch(true);
       } catch (err) {
         openPopup('Во время удаления фильма произошла ошибка.');
       }
@@ -40,14 +43,18 @@ const SavedMovies = ({ openPopup }) => {
   };
 
   async function getCardMovies(inputSearch, tumbler) {
+    localStorage.setItem('savedCardTumbler', false);
     setErrorsInfo('');
     try {
       const data = cards;
       let filterData = data.filter(({ nameRU }) => nameRU.toLowerCase().includes(inputSearch.toLowerCase()));
+      let filterDuration = filterData.filter(({ duration }) => duration <= 40);
+      filterData = tumbler ? filterDuration : filterData;
       setCardsShowed(filterData);
       if (inputSearch) {
         localStorage.setItem('savedFilms', JSON.stringify(filterData));
-        localStorage.setItem('savedFilmsTumbler', tumbler);
+        localStorage.setItem('savedCardTumbler', tumbler);
+        localStorage.setItem('filmsInputSearch', inputSearch);
       } else {
         localStorage.removeItem('savedFilms');
         localStorage.removeItem('savedFilmsTumbler');
@@ -58,10 +65,12 @@ const SavedMovies = ({ openPopup }) => {
       );
       setCards([]);
       localStorage.removeItem('savedFilms');
-      localStorage.removeItem('savedFilmsTumbler');
+      localStorage.removeItem('savedCardTumbler');
       localStorage.removeItem('savedFilmsInputSearch');
     } finally {
       setErrorsInfo('');
+
+      setDelSearch(false)
     }
   };
 
@@ -97,6 +106,10 @@ const SavedMovies = ({ openPopup }) => {
     }
   }, [openPopup]);
 
+  React.useEffect(() => {
+    const localStorageInputSearch = localStorage.getItem('filmsInputSearch');
+    getCardMovies(localStorageInputSearch);
+  }, [delSearch]);
 
   return (
     <div className="saved-movies">
