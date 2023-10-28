@@ -19,6 +19,8 @@ function Movies({ openPopup }) {
   const [cardShowedWithTumbler, setCardShowedWithTumbler] = useState([]);
 
 
+  const [cardsFull, setCardsFull] = React.useState(null);
+
   async function getCardMovies(inputSearch, isShort) {
     //localStorage.setItem('cardTumbler', false);
 
@@ -35,6 +37,7 @@ function Movies({ openPopup }) {
       let filterData = data.filter(({ nameRU }) => nameRU.toLowerCase().includes(inputSearch.toLowerCase()));
 
       localStorage.setItem('cards', JSON.stringify(filterData));
+      localStorage.setItem('cardsFull', JSON.stringify(filterData));
       localStorage.setItem('inputSearchCard', inputSearch);
       localStorage.setItem('filteredData', JSON.stringify(filterData));
 
@@ -106,6 +109,9 @@ function Movies({ openPopup }) {
     } else {
       filterShowed = cardShowedWithTumbler;
       filter = filmsWithTumbler;
+      const localStorageFilmsFull = localStorage.getItem('cardsFull'); //new
+      const filterData = JSON.parse(localStorageFilmsFull); //new
+      setCardsShowed(filterData); //new
     }
 
     localStorage.setItem('cards', JSON.stringify(filterShowed.concat(filter)));
@@ -185,9 +191,14 @@ function Movies({ openPopup }) {
     const localStorageTumbler = localStorage.getItem('cardTumbler');
     const localStorageFilms = localStorage.getItem('cards');
     const filterData = JSON.parse(localStorageFilms);
+    const localStorageFilmsFull = localStorage.getItem('cardsFull'); //new
+    const filterDataFull = JSON.parse(localStorageFilmsFull); //new
     if (localStorageTumbler === 'true') {
       const filterShowed = filterData.filter(({ duration }) => duration <= 40);
       setCardsShowed(filterShowed)
+    }
+    if (localStorageTumbler !== 'true') {
+      setCardsShowed(filterDataFull) //new
     }
   }, []);
 
