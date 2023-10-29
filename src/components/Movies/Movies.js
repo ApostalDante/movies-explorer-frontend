@@ -106,6 +106,7 @@ function Movies({ openPopup }) {
       setFilmsWithTumbler(cards);
       filterShowed = cardsShowed.filter(({ duration }) => duration <= 40);
       filter = cards.filter(({ duration }) => duration <= 40);
+      setCardsShowed(filterShowed); //new
     } else {
       filterShowed = cardShowedWithTumbler;
       filter = filmsWithTumbler;
