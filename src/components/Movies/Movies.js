@@ -19,7 +19,7 @@ function Movies({ openPopup }) {
   const [cardShowedWithTumbler, setCardShowedWithTumbler] = useState([]);
 
 
-  const [cardsFull, setCardsFull] = React.useState(null);
+  const [cardsFull, setCardsFull] = React.useState(null); //new
 
   async function getCardMovies(inputSearch, isShort) {
     //localStorage.setItem('cardTumbler', false);
@@ -37,7 +37,7 @@ function Movies({ openPopup }) {
       let filterData = data.filter(({ nameRU }) => nameRU.toLowerCase().includes(inputSearch.toLowerCase()));
 
       localStorage.setItem('cards', JSON.stringify(filterData));
-      localStorage.setItem('cardsFull', JSON.stringify(filterData));
+      localStorage.setItem('cardsFull', JSON.stringify(filterData)); //new
       localStorage.setItem('inputSearchCard', inputSearch);
       localStorage.setItem('filteredData', JSON.stringify(filterData));
 

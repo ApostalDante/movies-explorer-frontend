@@ -101,6 +101,7 @@ function App() {
   function handleSignOut() {
     localStorage.removeItem('jwt');
     localStorage.removeItem('cards');
+    localStorage.removeItem('cardsFull');
     localStorage.removeItem('cardTumbler');
     localStorage.removeItem('inputSearchCard');
     localStorage.removeItem('savedFilms');
