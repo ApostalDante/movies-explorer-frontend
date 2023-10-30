@@ -5,7 +5,7 @@ import HeaderLogo from "../../images/header__logo.svg";
 import isEmail from "validator/lib/isEmail";
 
 
-function Register() {
+function Register({ handleRegister }) {
   const [inputValues, setInputValues] = React.useState({});
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
@@ -30,6 +30,7 @@ function Register() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    handleRegister(inputValues);
   };
 
   return (

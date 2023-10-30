@@ -20,6 +20,9 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  max-width: 270px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card__buttons {
   margin: -2px 0 0;
